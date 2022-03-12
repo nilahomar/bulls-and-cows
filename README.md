@@ -4,6 +4,13 @@ This is a two player game **Bulls and Cows** developed in JS.
 
 ![cow icon](assets/cow.svg) ![bull icon](assets/bull.svg)
 
+## Functionality
+
+- Generates a secret number with distinct 4 digits.
+- Input validation.
+- Game statistics.
+- Multiple rounds.
+
 ## Installation
 
 ```sh

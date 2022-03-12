@@ -161,19 +161,3 @@ do {
     console.log(randEmoji, "Try again!".magenta)
   }
 } while (true)
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Feel free to edit / remove the line above, this is just to test the package
-//  Although we may want to use the user's name for something 
-
