@@ -12,7 +12,7 @@ function secretNumber() {
       secretArray.push(randNum);
     }
     //here it checks the array length is less than 4. if it is not it will execute the above condition again until the while condition return true.
-  } while (secretArray.length < 4)
+  } while (secretArray.length < 4);
   return Number(secretArray.join(''));
 }
 
