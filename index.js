@@ -1,13 +1,7 @@
 // Bulls and Cows
-// Get library for user input
-// we need to keep the next line, so we can prompt the user for input
 const prompt = require('prompt-sync')({ sigint: true });
 const colors = require('colors');
 var emoji = require("node-emoji");
-
-// Test that prompt is working 
-// let name = prompt('What is your name? ');
-// console.log(`User's input is: ${name}`);
 
 //function to create secret number
 function secretNumber() {
@@ -15,18 +9,18 @@ function secretNumber() {
   do {
     let randNum = Math.floor(Math.random() * 9) + 1;
     if (!secretArray.includes(randNum)) {
-      secretArray.push(randNum)
+      secretArray.push(randNum);
     }
     //here it checks the array length is less than 4. if it is not it will execute the above condition again until the while condition return true.
-  } while (secretArray.length < 4);
+  } while (secretArray.length < 4)
   return Number(secretArray.join(''));
 }
 
-console.log("Instructions to play the game :".magenta)
-console.log("1. Enter your name to play (optional)")
-console.log("2. Choose the level you want to play. Easy or Hard.(default mode is easy)")
-console.log("3. If you choose hard level, you get to guess only 15 times and exit the game.")
-console.log("4. If you choose Easy level, you can play the game until you win.")
+console.log("Instructions to play the game :".magenta);
+console.log("1. Enter your name to play (optional)");
+console.log("2. Choose the level you want to play. Easy or Hard.(default mode is easy)");
+console.log("3. If you choose hard level, you get to guess only 15 times and exit the game.");
+console.log("4. If you choose Easy level, you can play the game until you win.");
 console.log("5. You always have to provide a 4-digit number. The digits must be unique between 1 and 9.");
 console.log(`6. If the matching digits are in their right positions, they are "bulls", if they are in incorrect positions, they are "cows".`);
 
@@ -42,8 +36,8 @@ if (yourName === "") {
 let hardOrEasyGame = prompt("Choose your level. Enter easy or hard : ".red);
 
 
-let secret = secretNumber()
-console.log(secret)
+let secret = secretNumber();
+console.log(secret);
 
 let attempts = 0;
 let bulls = 0;
@@ -51,7 +45,7 @@ let cows = 0;
 let round = 0;
 
 //object to track the round and attempts
-let roundTracker = {}
+let roundTracker = {};
 
 //function to play the game again when the player wins the game and the number of attempts are over.
 function playAgain(win) {
@@ -63,7 +57,7 @@ function playAgain(win) {
 
   //count the number of rounds played.
   round++
-  let playAgain = prompt("Do you want to play again? Enter y / n : ".green)
+  let playAgain = prompt("Do you want to play again? Enter y / n : ".green);
 
   //if the player wants to play again reset the secret number,attempts, cows and bulls.
   if (playAgain === 'y') {
@@ -73,7 +67,7 @@ function playAgain(win) {
     cows = 0;
     bulls = 0;
     console.log(`New game ${emoji.get("fire")}`.yellow);
-    return true
+    return true;
   }
   return false;
 }
@@ -84,12 +78,12 @@ function printRoundStats() {
   let statusOfGame;
   for (const key in roundTracker) {
     if (roundTracker[key]["win"]) {
-      statusOfGame = "Won"
+      statusOfGame = "Won";
     }
     else {
-      statusOfGame = "Failed"
+      statusOfGame = "Failed";
     }
-    console.log(`Round - ${Number(key) + 1} : attempts ${roundTracker[key]["attempts"]}, Status of the game : ${statusOfGame}`)
+    console.log(`Round - ${Number(key) + 1} : attempts ${roundTracker[key]["attempts"]}, Status of the game : ${statusOfGame}`);
   }
 }
 
@@ -122,7 +116,7 @@ do {
     if (repeatGame === true) {
       continue;
     }
-    printRoundStats()
+    printRoundStats();
     break;
   }
 
@@ -138,11 +132,11 @@ do {
   //if the length of the original input is not equal to the size of the set, then we assume there are duplicates in the user input.
   let s1 = new Set(guessNumber);
   if (guessNumber.length !== s1.size) {
-    console.log("It must be 4 unique digits".red)
+    console.log("It must be 4 unique digits".red);
     continue;
   }
 
-  let secretString = secret.toString()
+  let secretString = secret.toString();
   bulls = 0;
   cows = 0;
   //count bulls and cows.
@@ -155,9 +149,9 @@ do {
     }
   }
   console.log(`Hint: ${bulls} bull and ${cows} cows`);
-  let funMessages = ["😆", "😅", "😂", "🤭", "🥴", "😤", "🙆"]
+  let funMessages = ["😆", "😅", "😂", "🤭", "🥴", "😤", "🙆"];
   if (bulls === 0 && cows === 0) {
     let randEmoji = funMessages[Math.floor(Math.random() * funMessages.length)];
-    console.log(randEmoji, "Try again!".magenta)
+    console.log(randEmoji, "Try again!".magenta);
   }
-} while (true)
+} while (true);
